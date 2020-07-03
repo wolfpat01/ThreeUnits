@@ -5,14 +5,18 @@ class Scene {
   }
 
   addObject(object) {
+    let _object;
     // connect the mesh and the texture
-    var cube = new THREE.Mesh(object.geometry, object.material);
+    _object = newCube(object.geometry, object.material);
+
+    _object.name = object.name|| _object.name;
+    _object.name = object.id|| _object.id;
 
     // add to the scene
-    this.scene.add(cube);
+    this.scene.add(_object);
 
     // stopped here
-    this.objects.set("");
+    this.objects.set(_object.id,_object);
   }
   deleteObject(object) {
     object.geometry.dispose();
@@ -27,5 +31,8 @@ class Scene {
   }
   loop() {
     let objei = this.getObject("id", "1");
+  }
+  getElementByIndex(index){
+    return this.scene.getObjectById(this.scene.children[index].id)
   }
 }
