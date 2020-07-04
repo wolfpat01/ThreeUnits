@@ -2,11 +2,11 @@
 
 ## main toDO list:
 
-[ ] extract the three abilities.
+[X] extract the three abilities.
 
 [ ] chose the best for us to use Openly.
 
-[ ] make the functions for bassic engine.
+[X] make the functions for bassic engine.
 
 [ ] make a simple UI for the engine.
 

@@ -13,28 +13,37 @@
     </style>
   </head>
   <body>
-    <div id="topBottom" class ="container">
-      <div id="top">
-
-      </div>
+    <div id="topBottom" class="container">
+      <div id="top"></div>
 
       <div id="middle" class="row">
-
         <div id="leftMenu" class="col-1">
-          <button type="button" class="btn btn-primary" onclick="create(`box`,colors[parseInt(Math.random()*(colors.length))])">create</button>
-  
-        <div id="renderer" class="col-4">
+          <button type="button" class="btn btn-primary" onclick="create(`box`)">
+            create
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            onclick="setRandomColor()"
+          >
+            randomize Color
+          </button>
         </div>
+
+        <div
+          id="renderer"
+          onclick="onDocumentMouseClick(event)"
+          class="col-4"
+        ></div>
       </div>
 
-      <div id="bottom">
-
-      </div>
+      <div id="bottom"></div>
     </div>
-    
 
     <script src="js/THREE.js"></script>
     <script src="js/vector.js"></script>
+    <script src="js/components/mathf.js"></script>
+    <script src="js/components/Quaternion.js"></script>
     <script src="js/point.js"></script>
     <script src="js/object.js"></script>
     <script src="js/camera.js"></script>
