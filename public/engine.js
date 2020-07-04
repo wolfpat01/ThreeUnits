@@ -1,9 +1,10 @@
 const Mathf = new CMathf();
 const Quaternion = new CQuaternion();
+
 class Engine {
   constructor() {
-    this.renderer = new Renderer(document.getElementById("renderer"));
-
+    this.window = document.getElementById("renderer");
+    this.renderer = new Renderer(this.window);
     this.frameRate = 100;
     this.renderer._camera.z = 5;
 
@@ -126,13 +127,13 @@ function onDocumentMouseClick(event) {
   var pos = new THREE.Vector3(); // create once and reuse
 
   vec.set(
-    (event.clientX / window.innerWidth) * 2 - 1,
-    -(event.clientY / window.innerHeight) * 2 + 1,
-    0.5
+    (event.clientX / (window.innerWidth - engine.window.offsetLeft)) * 2 - 1,
+    -(event.clientY / (window.innerHeight - engine.window.offsetTop)) * 2 + 1,
+    0.1
   );
 
   vec.unproject(camera);
-
+  console.log(vec.x, vec.y);
   vec.sub(camera.position).normalize();
 
   //var distance = -camera.position.z / vec.z;
@@ -193,7 +194,7 @@ item.addEventListener("touchstart", pressingDown, false);
 item.addEventListener("touchend", notPressingDown, false);
 
 function pressingDown(e) {
-  e = e || window.event;
+  e = e || engine.window.event;
 
   if ("which" in e)
     // Gecko (Firefox), WebKit (Safari/Chrome) & Opera

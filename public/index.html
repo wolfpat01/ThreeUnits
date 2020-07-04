@@ -1,43 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="./css/main.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
-    <title>My first three.js app</title>
-    <style>
-      body {
-        margin: 0;
-      }
-      canvas {
-        display: block;
-      }
-    </style>
+    <title>ThreeUnits</title>
+    <link rel="stylesheet" href="./css/bootstrap.css" type="text/css" />
   </head>
-  <body>
-    <div id="topBottom" class="container">
-      <div id="top"></div>
+  <body class="">
+    <div id="top" class="row top">
+      <div id="top" class="col-12 darkmod h-10">
+        header
+      </div>
 
-      <div id="middle" class="row">
-        <div id="leftMenu" class="col-1">
-          <button type="button" class="btn btn-primary" onclick="create(`box`)">
+      <div id="middle" class="row col-12">
+        <div id="leftMenu" onclick="" class="col-2 darkmod"></div>
+
+        <div
+          id="renderer"
+          onclick="onDocumentMouseClick(event)"
+          class="col-8"
+        ></div>
+
+        <div id="rightMenu" class="col-2 darkmod">
+          <button
+            type="button"
+            class="btn btn-light b-3 col-12 darkmod"
+            onclick="create(`box`)"
+          >
             create
           </button>
           <button
             type="button"
-            class="btn btn-primary"
+            class="btn btn-light col-12"
             onclick="setRandomColor()"
           >
             randomize Color
           </button>
         </div>
-
-        <div
-          id="renderer"
-          onclick="onDocumentMouseClick(event)"
-          class="col-4"
-        ></div>
       </div>
 
-      <div id="bottom"></div>
+      <div id="bottom" class="darkmod col-12 bottomDefault h-10"></div>
     </div>
 
     <script src="js/THREE.js"></script>

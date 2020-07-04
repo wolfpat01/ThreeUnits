@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+}
+canvas {
+  display: block;
+}
+
+.darkmod {
+  background: rgb(76, 76, 77);
+}
+.bottomDefault {
+}
+.section {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
