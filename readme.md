@@ -14,4 +14,4 @@
 
 [ ] work on the time control, the play button.
 
-[ ] ...
+[ ] ...still working on them
