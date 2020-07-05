@@ -9,24 +9,13 @@ class Renderer {
 
     this.intersects = [];
 
-    this.body.addEventListener(
-      "touchend",
-      (event) => this.ontouch(event),
-      false
-    );
     // default setup
     body.appendChild(this.renderer.domElement);
 
-    window.addEventListener(
-      "resize",
-      () => {
-        this.onWindowResize();
-      },
-      false
-    );
-
     this._scene = new Scene();
     this._camera = new Camera();
+
+    this.onWindowResize();
   }
   get scene() {
     return this._scene.scene;
@@ -91,5 +80,20 @@ class Renderer {
     raycaster.setFromCamera(mouse, camera);
     const intersects = raycaster.intersectObjects(yourObject3D);
     console.log(intersects);
+  }
+
+  eventListerners() {
+    this.body.addEventListener(
+      "touchend",
+      (event) => this.ontouch(event),
+      false
+    );
+    window.addEventListener(
+      "resize",
+      () => {
+        this.onWindowResize();
+      },
+      false
+    );
   }
 }
