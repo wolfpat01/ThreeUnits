@@ -6,15 +6,17 @@ class Renderer {
     this.renderer.setSize(this.width, this.height);
 
     this.body = document.getElementById(id);
+
     this.intersects = [];
+
     this.body.addEventListener(
       "touchend",
-      (event) => {
-        this.ontouch(event);
-      },
+      (event) => this.ontouch(event),
       false
     );
+    // default setup
     body.appendChild(this.renderer.domElement);
+
     window.addEventListener(
       "resize",
       () => {
@@ -44,39 +46,40 @@ class Renderer {
   }
 
   onWindowResize() {
+    // setting variables
     let main = document.getElementById("renderer");
+    let middle = document.getElementById("middle");
+
     let windowWidth = window.innerWidth;
     let windowHeight = window.innerHeight;
+
     let top = document.getElementById("top");
     let bottom = document.getElementById("bottom");
 
     let left = document.getElementById("leftMenu");
     let right = document.getElementById("rightMenu");
 
-    let sumTTB = windowHeight - (left.clientWidth + right.clientWidth);
-    let sumLTR =
-      windowWidth -
-      (left.clientWidth +
-        right.clientWidth +
-        (left.clientWidth + right.clientWidth)) /
-        2;
+    // calculate window height and width
 
-    this.height = Mathf.Clamp(sumTTB + 300, 90000, 0);
+    let sumTTB = windowHeight - (top.offsetHeight + bottom.offsetHeight);
+    let sumLTR = windowWidth - (left.clientWidth + right.clientWidth);
+
+    this.height = sumTTB;
     this.width = sumLTR;
-
+    if (this.height < 0) this.height = -this.height;
+    if (this.width < 0) this.width = -this.width;
     main.style.height = this.height;
     main.style.Width = this.width;
 
-    console.log(
-      main.offsetHeight,
-      windowHeight,
-      windowHeight - (top.clientHeight + bottom.clientHeight)
-    );
+    middle.style.height = this.height + " !important";
+    middle.style.Width = this.width;
+
+    console.log(main.offsetHeight, windowHeight, sumTTB);
 
     this.camera.aspect = this.width / this.height;
     this.camera.updateProjectionMatrix();
 
-    this.renderer.setSize(this.width - 10, this.height - 10);
+    this.renderer.setSize(this.width - 10, this.height);
   }
 
   onTouch(event) {

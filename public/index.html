@@ -7,16 +7,17 @@
     <link rel="stylesheet" href="./css/bootstrap.css" type="text/css" />
   </head>
   <body class="">
-    <div id="top" class="row top">
-      <div id="top" class="col-12 darkmod">
+    <div id="all" class="row">
+      <div id="top" class="col-12 darkmod top">
         header
       </div>
 
       <div id="middle" class="row col-12">
-        <div id="leftMenu" onclick="" class="col-2 darkmod leftdefault"></div>
+        <div id="leftMenu" class="col-2 darkmod leftdefault"></div>
 
         <div
           id="renderer"
+          height="200px"
           onclick="onDocumentMouseClick(event)"
           class="col-8"
         ></div>
@@ -49,6 +50,8 @@
     <script src="js/components/mathf.js"></script>
     <script src="js/components/Quaternion.js"></script>
     <script src="js/components/mouse.js"></script>
+    <script src="js/components/object.js"></script>
+    <script src="js/settings.js"></script>
     <script src="js/point.js"></script>
     <script src="js/object.js"></script>
     <script src="js/camera.js"></script>

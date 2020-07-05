@@ -40,7 +40,7 @@ class Scene {
     this.scene.add(_object);
 
     // stopped here
-    this.objects.set(_object.id, _object);
+    this.objects.set(_object.id, new OBject(_object));
   }
   deleteObject(object) {
     object.geometry.dispose();

@@ -83,8 +83,9 @@ function create(type = "box") {
     engine.renderer._scene.getElementByIndex(index).position
   );
 }
-document.addEventListener("contextmenu", (e) => e.preventDefault());
+
 let isRightMB = false;
+
 const pressing = () => {
   if (isRightMB) {
     rightClicked();
@@ -93,6 +94,7 @@ const pressing = () => {
 let currentRotation = new THREE.Vector2(0, 0);
 let sensitivity = 1;
 let maxYAngle = 80;
+
 function rightClicked() {
   camera = engine.renderer.camera;
 
@@ -128,13 +130,17 @@ function onDocumentMouseClick(event) {
   var pos = new THREE.Vector3(); // create once and reuse
 
   vec.set(
-    (event.clientX / (window.innerWidth - engine.window.offsetLeft)) * 2 - 1,
-    -(event.clientY / (window.innerHeight - engine.window.offsetTop)) * 2 + 1,
+    ((event.clientX + engine.window.offsetLeft) / engine.window.offsetWidth) *
+      2 -
+      2,
+    -((event.clientY + engine.window.offsetTop) / engine.window.offsetHeight) *
+      2 +
+      1,
     0.1
   );
-
-  vec.unproject(camera);
   console.log(vec.x, vec.y);
+  vec.unproject(camera);
+
   vec.sub(camera.position).normalize();
 
   //var distance = -camera.position.z / vec.z;

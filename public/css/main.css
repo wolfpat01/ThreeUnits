@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  overflow: hidden;
 }
 div {
   margin: 0;
@@ -10,7 +11,7 @@ canvas {
 }
 
 .darkmod {
-  background: rgb(76, 76, 77);
+  background: #a99e9e;
 }
 .bottomDefault {
   height: 200px;
