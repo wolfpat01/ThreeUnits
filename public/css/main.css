@@ -1,15 +1,24 @@
 body {
   margin: 0;
 }
+div {
+  margin: 0;
+}
 canvas {
   display: block;
+  margin-left: -1em;
 }
 
 .darkmod {
   background: rgb(76, 76, 77);
 }
 .bottomDefault {
+  height: 200px;
 }
+.leftdefault {
+  width: 200px;
+}
+
 .section {
   height: 100%;
   display: flex;

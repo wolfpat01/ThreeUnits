@@ -1,5 +1,6 @@
 const Mathf = new CMathf();
 const Quaternion = new CQuaternion();
+const Mouse = new CMouse();
 
 class Engine {
   constructor() {
