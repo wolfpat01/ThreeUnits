@@ -1,6 +1,9 @@
+import { Scene } from "./scene.js";
+import { Camera } from "./camera.js";
+import { WebGLRenderer } from "./components/THREE.module.js";
 class Renderer {
   constructor(body, id = "renderer") {
-    this.renderer = new THREE.WebGLRenderer();
+    this.renderer = new WebGLRenderer();
     this.width = 0;
     this.height = 0;
     this.renderer.setSize(this.width, this.height);
@@ -60,7 +63,7 @@ class Renderer {
     main.style.height = this.height;
     main.style.Width = this.width;
 
-    middle.style.height = this.height + " !important";
+    middle.style.height = this.height;
     middle.style.Width = this.width;
 
     console.log(main.offsetHeight, windowHeight, sumTTB);
@@ -97,3 +100,5 @@ class Renderer {
     );
   }
 }
+
+export { Renderer };

@@ -1,8 +1,14 @@
+import { OBJLoader2 } from "./components/objLoader.js";
+import { Scene as TScene, Vector3 } from "./components/THREE.module.js";
+import { newCube, spownBlock, OBject } from "./components/object.js";
+
 class Scene {
   constructor(props) {
-    this.scene = new THREE.Scene(props);
+    this.scene = new TScene(props);
+    this.scene.background = new THREE.Color("#87CEFA");
     this.objects = new Map();
-    this.selector;
+    this.selector = {};
+    this.selectedObject;
   }
   CreteSelectorObject() {
     let object = {
@@ -11,16 +17,26 @@ class Scene {
 
       material: new THREE.MeshBasicMaterial({ color: "brown" }),
     };
+    return new Promise((solve, reject) => {
+      this.loadObj().then((obj) => {
+        this.selector = newCube(
+          new THREE.SphereGeometry(),
+          new THREE.MeshBasicMaterial({ color: "white" })
+        );
+        /*this.selector = obj;
+        this.selector.material = new THREE.MeshBasicMaterial({
+          color: "white",
+        });*/
+        this.selector.scale.set(0.1, 0.1, 0.1);
+        // add to the scene
+        this.scene.add(this.selector);
 
+        solve(this.selector);
+      });
+    });
     // connect the mesh and the texture
-    this.selector = newCube(object.geometry, object.material);
+    //this.selector = newCube(object.geometry, object.material);
 
-    this.selector.name = "selector";
-    this.selector.scale.x = 0.2;
-    this.selector.scale.y = 0.2;
-    this.selector.scale.z = 0.2;
-    // add to the scene
-    this.scene.add(this.selector);
     return this.selector;
   }
   changePosOfSelector(newPos) {
@@ -42,6 +58,20 @@ class Scene {
     // stopped here
     this.objects.set(_object.id, new OBject(_object));
   }
+  spownObject(options) {
+    let _object;
+    // connect the mesh and the texture
+    _object = spownBlock(options);
+
+    _object.name = options.name || "noniname";
+    _object.name = options.id || "noniid";
+
+    // add to the scene
+    this.scene.add(_object);
+
+    // stopped here
+    this.objects.set(_object.id, new OBject(_object));
+  }
   deleteObject(object) {
     object.geometry.dispose();
     object.material.dispose();
@@ -54,9 +84,28 @@ class Scene {
     return this.scene.getObjectByProperty(prop, val);
   }
   loop() {
-    let objei = this.getObject("id", "1");
+    if (this.selectedObject) {
+    }
   }
   getElementByIndex(index) {
     return this.scene.getObjectById(this.scene.children[index].id);
   }
+  loadObj() {
+    return new Promise((solve, reject) => {
+      let loader = new OBJLoader2();
+      loader.load(
+        "./obj/bRow.obj",
+        solve, // called when loading is in progresses
+        function (xhr) {
+          console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+        },
+        // called when loading has errors
+        function (error) {
+          console.log(error);
+        }
+      );
+    });
+  }
 }
+
+export { Scene };

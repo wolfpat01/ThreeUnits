@@ -15,38 +15,55 @@
       <div id="middle" class="row col-12">
         <div id="leftMenu" class="col-2 darkmod leftdefault"></div>
 
-        <div
-          id="renderer"
-          height="200px"
-          onclick="onDocumentMouseClick(event)"
-          class="col-8"
-        ></div>
+        <div id="renderer" height="200px" class="col-8"></div>
 
         <div id="rightMenu" class="col-2 darkmod leftdefault">
           <button
             type="button"
+            id="createButton"
             class="btn btn-light b-3 col-12 darkmod"
-            onclick="create(`box`)"
           >
             create
           </button>
           <button
             type="button"
+            id="randomColorButton"
             class="btn btn-light col-12"
-            onclick="setRandomColor()"
           >
             randomize Color
+          </button>
+          <button
+            type="button"
+            id="costumTextureButton"
+            class="btn btn-light col-12"
+          >
+            addCostumTexture
+          </button>
+          <button type="button" id="spownGrass" class="btn btn-light col-12">
+            spownGrass
           </button>
         </div>
       </div>
 
       <div id="bottom" class="darkmod col-12 bottomDefault">
-        asdfas
+        <button type="button" id="spownWrold" class="btn btn-light col-12">
+          spownWrold
+        </button>
       </div>
     </div>
-
     <script src="js/THREE.js"></script>
     <script src="js/vector.js"></script>
+
+    <script src="js/components/mathf.js"></script>
+    <script src="js/components/Quaternion.js"></script>
+    <script src="js/components/mouse.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/point.js"></script>
+    <script type="module" src="index.js"></script>
+    <!--
+
+    <script src="js/vector.js"></script>
+    <script src="./js//components/objLoader.js"></script>
     <script src="js/components/mathf.js"></script>
     <script src="js/components/Quaternion.js"></script>
     <script src="js/components/mouse.js"></script>
@@ -57,6 +74,6 @@
     <script src="js/camera.js"></script>
     <script src="js/scene.js"></script>
     <script src="js/renderer.js"></script>
-    <script src="engine.js"></script>
-  </body>
+        <script src="engine.js" ></script>
+  --></body>
 </html>

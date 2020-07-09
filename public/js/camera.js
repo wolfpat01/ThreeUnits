@@ -1,8 +1,9 @@
+import { PerspectiveCamera } from "./components/THREE.module.js";
 class Camera {
   constructor(a, b, c, d) {
     this._angle = 0;
     this.radius = 0;
-    this.camera = new THREE.PerspectiveCamera(
+    this.camera = new PerspectiveCamera(
       a || 75,
       b || window.innerWidth / window.innerHeight,
       c || 0.1,
@@ -51,3 +52,4 @@ class Camera {
     this.camera.position.z = z;
   }
 }
+export { Camera };
