@@ -9,6 +9,7 @@ class Scene {
     this.objects = new Map();
     this.selector = {};
     this.selectedObject;
+    this.chuncks = [];
   }
   CreteSelectorObject() {
     let object = {
@@ -109,25 +110,32 @@ class Scene {
 
   placeChunck(pos, perl) {
     const group = new THREE.Group();
-    for (let x = pos.x - 100; x < pos.x + 100; x++) {
-      for (let y = pos.y - 100; y < pos.y + 100; y++) {
+    for (let x = pos.x - 10; x < pos.x + 10; x++) {
+      for (let y = pos.y - 10; y < pos.y + 10; y++) {
+        let posi = new THREE.Vector3(
+          x,
+          -5 - parseInt(perl.noise(x * 600, y * 600, Math.random() * 600) * 6),
+          y
+        );
+        group.add(
+          spawnBlock({
+            type: "dirt",
+            position: new THREE.Vector3(posi.x, posi.y - 1, posi.z),
+          })
+        );
         group.add(
           spawnBlock({
             type: "grass",
-            position: new THREE.Vector3(
-              x,
-              -5 -
-                parseInt(perl.noise(x * 600, y * 600, Math.random() * 600) * 7),
-              y
-            ),
+            position: posi,
           })
         );
       }
     }
-    console.log("done");
+
+    this.chuncks.push(group);
     this.scene.add(group);
-    console.log(this.scene.children);
   }
+  removeChunck() {}
 }
 
 export { Scene };

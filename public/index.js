@@ -83,7 +83,7 @@ renderer.onclick = function onDocumentMouseClick(event) {
 
   //var distance = -camera.position.z / vec.z;
 
-  pos.copy(camera.position).add(vec.multiplyScalar(camera.position.z));
+  pos.copy(camera.position).add(vec.multiplyScalar(-camera.position.z));
   engine.selectorPositionObject.position.x = pos.x + 0.1;
   engine.selectorPositionObject.position.y = pos.y + 0.4;
   engine.selectorPositionObject.position.z = pos.z;
@@ -186,4 +186,79 @@ function treespawner() {
     type: "leaves",
   });
   return index;
+}
+
+var interval;
+var called = false;
+
+document.onkeyown = function (e) {
+  if (interval == null) {
+    called = false;
+    interval = setInterval(function () {
+      keyPressed(e.keyCode);
+      called = true;
+    }, 10);
+  }
+};
+document.onkeyup = function (e) {
+  clearInterval(interval);
+  interval = null;
+  if (!called) keyPressed(e.code);
+};
+
+function keyPressed(key) {
+  console.log(key);
+  keysHandler(key);
+}
+const direction = new THREE.Vector3();
+
+let speed = 0.5;
+
+function keysHandler(key) {
+  switch (key) {
+    case "KeyW":
+      camera.getWorldDirection(direction);
+
+      camera.position.addScaledVector(direction, speed);
+      break;
+    case "KeyS":
+      camera.getWorldDirection(direction);
+
+      camera.position.addScaledVector(direction, -speed);
+      break;
+    case "KeyD":
+      camera.getWorldDirection(direction);
+
+      camera.position.addScaledVector(
+        new THREE.Vector3(direction.z, direction.x, direction.y),
+        -speed
+      );
+      break;
+    case "KeyA":
+      camera.getWorldDirection(direction);
+
+      camera.position.addScaledVector(
+        new THREE.Vector3(direction.z, direction.x, direction.y),
+        speed
+      );
+      break;
+    case "KeyQ":
+      camera.getWorldDirection(direction);
+
+      camera.position.addScaledVector(
+        new THREE.Vector3(direction.y, direction.z, direction.x),
+        -speed
+      );
+      break;
+    case "KeyZ":
+      camera.getWorldDirection(direction);
+
+      camera.position.addScaledVector(
+        new THREE.Vector3(direction.y, direction.z, direction.x),
+        speed
+      );
+      break;
+    default:
+      break;
+  }
 }

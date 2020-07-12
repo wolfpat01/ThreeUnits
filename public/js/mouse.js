@@ -11,7 +11,7 @@ class CMouse {
 var clientX = 0;
 var clientY = 0;
 
-let item = document.getElementById("renderer");
+item = document.getElementById("renderer");
 
 let timerID;
 let counter = 0;
@@ -20,15 +20,15 @@ let isMouseDown = true;
 
 let pressHoldEvent = new CustomEvent("pressHold");
 // Listening for the mouse and touch events
-item.addEventListener("mousedown", pressingDown, false);
-item.addEventListener("mouseup", notPressingDown, false);
+item.addEventListener("mousedown", keyDown, false);
+item.addEventListener("mouseup", keyUp, false);
 item.addEventListener("mousemove", updateMouse, false);
-item.addEventListener("mouseleave", notPressingDown, false);
+item.addEventListener("mouseleave", keyUp, false);
 
-item.addEventListener("touchstart", pressingDown, false);
-item.addEventListener("touchend", notPressingDown, false);
+item.addEventListener("touchstart", keyDown, false);
+item.addEventListener("touchend", keyUp, false);
 
-function pressingDown(e) {
+function keyDown(e) {
   e = e || engine.window.event;
 
   if ("which" in e)
@@ -44,7 +44,7 @@ function pressingDown(e) {
   e.preventDefault();
 }
 
-function notPressingDown() {
+function keyUp() {
   cancelAnimationFrame(timerID);
 }
 
