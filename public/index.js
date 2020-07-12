@@ -1,7 +1,7 @@
+import * as THREE from "./js/components/additionals/THREE.module.js";
 import { Engine } from "./js/engine.js";
 import { getMaterialFromImage } from "./js/components/textureLoader.js";
-import { Perlin } from "./js/components/perln.js";
-import { LessEqualStencilFunc, Vector3 } from "./js/components/THREE.module.js";
+import { Perlin } from "./js/components/additionals/perln.js";
 
 const colors = ["red", "blue", "green", "white", "brown"];
 
@@ -28,8 +28,8 @@ spawnTree.onclick = function () {
 
 spawnGrass.onclick = function () {
   let index = engine.addObject("spawn", {
-    position: new Vector3(0, 0, 0),
-    type: "leaves",
+    position: new THREE.Vector3(0, 0, 0),
+    type: "grass",
   });
   engine.renderer.camera.lookAt(
     engine.renderer._scene.getElementByIndex(index).position
@@ -38,7 +38,7 @@ spawnGrass.onclick = function () {
 
 spawnWrold.onclick = function spawnWorld() {
   let perl = new Perlin(50);
-  engine.renderer._scene.createWorld(new Vector3(0, 0), perl);
+  engine.renderer._scene.placeChunck(new THREE.Vector3(0, 0), perl);
 };
 
 createButton.onclick = function create() {
@@ -153,36 +153,36 @@ function rotateAboutPoint(obj, point, axis, theta, pointIsWorld) {
 
 function treespawner() {
   let index = engine.addObject("spawn", {
-    position: new Vector3(0, 0, 0),
+    position: new THREE.Vector3(0, 0, 0),
     type: "treeWood",
   });
 
   engine.addObject("spawn", {
-    position: new Vector3(0, 1, 0),
+    position: new THREE.Vector3(0, 1, 0),
     type: "treeWood",
   });
   engine.addObject("spawn", {
-    position: new Vector3(0, 2, 0),
+    position: new THREE.Vector3(0, 2, 0),
     type: "treeWood",
   });
   engine.addObject("spawn", {
-    position: new Vector3(1, 2, 0),
+    position: new THREE.Vector3(1, 2, 0),
     type: "leaves",
   });
   engine.addObject("spawn", {
-    position: new Vector3(-1, 2, 0),
+    position: new THREE.Vector3(-1, 2, 0),
     type: "leaves",
   });
   engine.addObject("spawn", {
-    position: new Vector3(0, 2, 1),
+    position: new THREE.Vector3(0, 2, 1),
     type: "leaves",
   });
   engine.addObject("spawn", {
-    position: new Vector3(0, 2, -1),
+    position: new THREE.Vector3(0, 2, -1),
     type: "leaves",
   });
   engine.addObject("spawn", {
-    position: new Vector3(0, 3, 0),
+    position: new THREE.Vector3(0, 3, 0),
     type: "leaves",
   });
   return index;

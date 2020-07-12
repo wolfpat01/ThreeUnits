@@ -1,10 +1,10 @@
-import { OBJLoader2 } from "./components/objLoader.js";
-import { Scene as TScene, Vector3 } from "./components/THREE.module.js";
+import { OBJLoader2 } from "./components/additionals/objLoader.js";
+import * as THREE from "./components/additionals/THREE.module.js";
 import { newCube, spawnBlock, OBject } from "./components/object.js";
 
 class Scene {
   constructor(props) {
-    this.scene = new TScene(props);
+    this.scene = new THREE.Scene(props);
     this.scene.background = new THREE.Color("#87CEFA");
     this.objects = new Map();
     this.selector = {};
@@ -114,7 +114,7 @@ class Scene {
         group.add(
           spawnBlock({
             type: "grass",
-            position: new Vector3(
+            position: new THREE.Vector3(
               x,
               -5 -
                 parseInt(perl.noise(x * 600, y * 600, Math.random() * 600) * 7),

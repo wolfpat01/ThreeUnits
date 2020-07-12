@@ -1,4 +1,4 @@
-import { PerspectiveCamera } from "./components/THREE.module.js";
+import { PerspectiveCamera } from "./components/additionals/THREE.module.js";
 class Camera {
   constructor(a, b, c, d) {
     this._angle = 0;

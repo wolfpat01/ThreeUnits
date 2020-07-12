@@ -1,4 +1,4 @@
-import * as three from "./THREE.module.js";
+import * as three from "./additionals/THREE.module.js";
 
 function getMaterialFromImage(dir) {
   var texture = new three.TextureLoader().load(dir);

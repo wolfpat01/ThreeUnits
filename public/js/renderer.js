@@ -1,6 +1,6 @@
 import { Scene } from "./scene.js";
 import { Camera } from "./camera.js";
-import { WebGLRenderer } from "./components/THREE.module.js";
+import { WebGLRenderer } from "./components/additionals/THREE.module.js";
 class Renderer {
   constructor(body, id = "renderer") {
     this.renderer = new WebGLRenderer();
