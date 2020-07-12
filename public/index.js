@@ -197,7 +197,7 @@ document.onkeyown = function (e) {
     interval = setInterval(function () {
       keyPressed(e.keyCode);
       called = true;
-    }, 10);
+    }, 100);
   }
 };
 document.onkeyup = function (e) {
@@ -207,7 +207,6 @@ document.onkeyup = function (e) {
 };
 
 function keyPressed(key) {
-  console.log(key);
   keysHandler(key);
 }
 const direction = new THREE.Vector3();
