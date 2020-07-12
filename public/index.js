@@ -9,38 +9,36 @@ const renderer = document.getElementById("renderer");
 const createButton = document.getElementById("createButton");
 const randomColorButton = document.getElementById("randomColorButton");
 const costumTextureButton = document.getElementById("costumTextureButton");
-const spownGrass = document.getElementById("spownGrass");
-const spownWrold = document.getElementById("spownWrold");
+const spawnGrass = document.getElementById("spawnGrass");
+const spawnWrold = document.getElementById("spawnWrold");
+
+const spawnTree = document.getElementById("spawnTree");
 let engine = new Engine();
 
 engine.start();
 
 const camera = engine.renderer.camera;
 
-spownGrass.onclick = function spown() {
-  let index = engine.addObject("spownGrass", "", new Vector3(0, 0, 0));
+spawnTree.onclick = function () {
+  let index = treespawner();
   engine.renderer.camera.lookAt(
     engine.renderer._scene.getElementByIndex(index).position
   );
 };
 
-spownWrold.onclick = function spownWorld() {
-  let perl = new Perlin(50);
+spawnGrass.onclick = function () {
+  let index = engine.addObject("spawn", {
+    position: new Vector3(0, 0, 0),
+    type: "leaves",
+  });
+  engine.renderer.camera.lookAt(
+    engine.renderer._scene.getElementByIndex(index).position
+  );
+};
 
-  for (let x = -100; x < 100; x++) {
-    for (let y = -100; y < 100; y++) {
-      engine.addObject(
-        "spownGrass",
-        "spownGrass",
-        new Vector3(
-          x,
-          -5 - parseInt(perl.noise(x * 600, y * 600, Math.random() * 600) * 5),
-          y
-        )
-      );
-      console.log();
-    }
-  }
+spawnWrold.onclick = function spawnWorld() {
+  let perl = new Perlin(50);
+  engine.renderer._scene.createWorld(new Vector3(0, 0), perl);
 };
 
 createButton.onclick = function create() {
@@ -86,8 +84,8 @@ renderer.onclick = function onDocumentMouseClick(event) {
   //var distance = -camera.position.z / vec.z;
 
   pos.copy(camera.position).add(vec.multiplyScalar(camera.position.z));
-  engine.selectorPositionObject.position.x = pos.x;
-  engine.selectorPositionObject.position.y = pos.y + 0.3;
+  engine.selectorPositionObject.position.x = pos.x + 0.1;
+  engine.selectorPositionObject.position.y = pos.y + 0.4;
   engine.selectorPositionObject.position.z = pos.z;
 
   var intersects = raycaster.intersectObjects(
@@ -125,9 +123,8 @@ function rightClicked() {
   vec.unproject(camera);
 
   vec.sub(camera.position).normalize();
+  engine.renderer.camera.lookAt(engine.selectorPositionObject.position);
 }
-
-let isMouseDown = true;
 
 var raycaster = new THREE.Raycaster();
 
@@ -152,4 +149,41 @@ function rotateAboutPoint(obj, point, axis, theta, pointIsWorld) {
   }
 
   obj.rotateOnAxis(axis, theta); // rotate the OBJECT
+}
+
+function treespawner() {
+  let index = engine.addObject("spawn", {
+    position: new Vector3(0, 0, 0),
+    type: "treeWood",
+  });
+
+  engine.addObject("spawn", {
+    position: new Vector3(0, 1, 0),
+    type: "treeWood",
+  });
+  engine.addObject("spawn", {
+    position: new Vector3(0, 2, 0),
+    type: "treeWood",
+  });
+  engine.addObject("spawn", {
+    position: new Vector3(1, 2, 0),
+    type: "leaves",
+  });
+  engine.addObject("spawn", {
+    position: new Vector3(-1, 2, 0),
+    type: "leaves",
+  });
+  engine.addObject("spawn", {
+    position: new Vector3(0, 2, 1),
+    type: "leaves",
+  });
+  engine.addObject("spawn", {
+    position: new Vector3(0, 2, -1),
+    type: "leaves",
+  });
+  engine.addObject("spawn", {
+    position: new Vector3(0, 3, 0),
+    type: "leaves",
+  });
+  return index;
 }

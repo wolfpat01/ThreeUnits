@@ -1,17 +1,13 @@
 const { app, BrowserWindow } = require("electron");
 
-function createWindow() {
-  // Create the browser window.
-  let win = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {
-      nodeIntegration: true,
-    },
-  });
+app.on("ready", () => {
+  // once electron has started up, create a window.
+  const window = new BrowserWindow({ width: 800, height: 600 });
 
-  // and load the index.html of the app.
-  win.loadFile("index.html");
-}
+  // hide the default menu bar that comes with the browser window
+  window.setMenuBarVisibility(null);
 
-app.whenReady().then(createWindow);
+  // load a website to display
+  window.loadFile("./public/index.html");
+  window.webContents.openDevTools();
+});

@@ -15,25 +15,35 @@ import * as textureLoader from "./textureLoader.js";
 import * as fis from "./fileHandler.js";
 
 let blocks = [];
-fis.readFile("/public/data/blocks.json").then((data) => {
+fis.readFile("./data/blocks.json").then((data) => {
   blocks = JSON.parse(data);
+  readyUpBlocks();
 });
 
 function sphere() {}
-function Geometry() {
-  return new three.PlaneGeometry();
-}
+const Geometry = new three.PlaneGeometry();
+
 function newCube(geometry, material) {
   return new three.Mesh(geometry, material);
 }
-function spownBlock(options) {
+let materials = {};
+
+function readyUpBlocks() {
+  Object.keys(blocks).forEach((name) => {
+    materials[name] = MaterialBlock(name);
+  });
+  console.log("everything is ready", materials);
+}
+
+function spawnBlock(options) {
   const { type, position, w = 10, h = 10 } = options;
-  const geometry = Geometry();
-  const materialBlock = MaterialBlock(type);
+
+  const materialBlock = materials[type];
   const { x, y, z } = position;
   let group = new three.Group();
 
-  const bt = new three.Mesh(geometry, materialBlock[0]);
+  const bt = new three.Mesh(Geometry, materialBlock[0]);
+
   bt.position.x = x;
   bt.position.y = y - 0.5;
   bt.position.z = z;
@@ -42,7 +52,7 @@ function spownBlock(options) {
 
   group.add(bt);
 
-  const top = new three.Mesh(geometry, materialBlock[1]);
+  const top = new three.Mesh(Geometry, materialBlock[1]);
   top.position.x = x;
   top.position.y = y + 0.5;
   top.position.z = z;
@@ -51,7 +61,7 @@ function spownBlock(options) {
 
   group.add(top);
 
-  const s0 = new three.Mesh(geometry, materialBlock[2]);
+  const s0 = new three.Mesh(Geometry, materialBlock[2]);
   s0.position.x = x + 0.5;
   s0.position.y = y;
   s0.position.z = z;
@@ -60,7 +70,7 @@ function spownBlock(options) {
 
   group.add(s0);
 
-  const s1 = new three.Mesh(geometry, materialBlock[3]);
+  const s1 = new three.Mesh(Geometry, materialBlock[3]);
   s1.position.x = x - 0.5;
   s1.position.y = y;
   s1.position.z = z;
@@ -69,7 +79,7 @@ function spownBlock(options) {
 
   group.add(s1);
 
-  const s2 = new three.Mesh(geometry, materialBlock[4]);
+  const s2 = new three.Mesh(Geometry, materialBlock[4]);
   s2.position.x = x;
   s2.position.y = y;
   s2.position.z = z + 0.5;
@@ -78,7 +88,7 @@ function spownBlock(options) {
 
   group.add(s2);
 
-  const s3 = new three.Mesh(geometry, materialBlock[5]);
+  const s3 = new three.Mesh(Geometry, materialBlock[5]);
   s3.position.x = x;
   s3.position.y = y;
   s3.position.z = z - 0.5;
@@ -100,4 +110,4 @@ function setMat(array) {
   });
 }
 
-export { newCube, spownBlock, OBject };
+export { newCube, spawnBlock, OBject };

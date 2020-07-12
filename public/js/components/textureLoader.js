@@ -6,6 +6,7 @@ function getMaterialFromImage(dir) {
   return new three.MeshBasicMaterial({
     map: texture,
     wireframe: false,
+    transparent: true,
   });
 }
 export { getMaterialFromImage };

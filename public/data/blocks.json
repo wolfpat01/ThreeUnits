@@ -1,10 +1,26 @@
 {
   "grass": [
-    "/public/textures/grass0.png",
-    "/public/textures/grass1.png",
-    "/public/textures/grass2.png",
-    "/public/textures/grass3.png",
-    "/public/textures/grass4.png",
-    "/public/textures/grass5.png"
+    "./textures/grass0.png",
+    "./textures/grass1.png",
+    "./textures/grass2.png",
+    "./textures/grass2.png",
+    "./textures/grass2.png",
+    "./textures/grass2.png"
+  ],
+  "treeWood": [
+    "./textures/treewood0.jpg",
+    "./textures/treewood0.jpg",
+    "./textures/treewood2.jpg",
+    "./textures/treewood2.jpg",
+    "./textures/treewood2.jpg",
+    "./textures/treewood2.jpg"
+  ],
+  "leaves": [
+  "./textures/leaves.png",
+  "./textures/leaves.png",
+  "./textures/leaves.png",
+  "./textures/leaves.png",
+  "./textures/leaves.png",
+  "./textures/leaves.png"
   ]
 }

@@ -1,6 +1,6 @@
 import { OBJLoader2 } from "./components/objLoader.js";
 import { Scene as TScene, Vector3 } from "./components/THREE.module.js";
-import { newCube, spownBlock, OBject } from "./components/object.js";
+import { newCube, spawnBlock, OBject } from "./components/object.js";
 
 class Scene {
   constructor(props) {
@@ -58,10 +58,10 @@ class Scene {
     // stopped here
     this.objects.set(_object.id, new OBject(_object));
   }
-  spownObject(options) {
+  spawnObject(options) {
     let _object;
     // connect the mesh and the texture
-    _object = spownBlock(options);
+    _object = spawnBlock(options);
 
     _object.name = options.name || "noniname";
     _object.name = options.id || "noniid";
@@ -105,6 +105,28 @@ class Scene {
         }
       );
     });
+  }
+
+  placeChunck(pos, perl) {
+    const group = new THREE.Group();
+    for (let x = pos.x - 100; x < pos.x + 100; x++) {
+      for (let y = pos.y - 100; y < pos.y + 100; y++) {
+        group.add(
+          spawnBlock({
+            type: "grass",
+            position: new Vector3(
+              x,
+              -5 -
+                parseInt(perl.noise(x * 600, y * 600, Math.random() * 600) * 7),
+              y
+            ),
+          })
+        );
+      }
+    }
+    console.log("done");
+    this.scene.add(group);
+    console.log(this.scene.children);
   }
 }
 

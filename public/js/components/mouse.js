@@ -11,10 +11,12 @@ class CMouse {
 var clientX = 0;
 var clientY = 0;
 
-let item = document;
+let item = document.getElementById("renderer");
 
 let timerID;
 let counter = 0;
+
+let isMouseDown = true;
 
 let pressHoldEvent = new CustomEvent("pressHold");
 // Listening for the mouse and touch events

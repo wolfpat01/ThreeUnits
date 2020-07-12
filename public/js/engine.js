@@ -40,12 +40,13 @@ class Engine {
   start() {
     //this.addObject("cube", "red");
   }
-  addObject(type, color, opti) {
+  addObject(volume, options) {
+    const { type, position, color } = options;
     let index = this.renderer.scene.children.length;
     if (!this.currentScene) {
       return;
     }
-    switch (type) {
+    switch (volume) {
       case "box" || "cube":
         this.renderer._scene.addObject({
           id: index,
@@ -53,10 +54,10 @@ class Engine {
           material: new MeshBasicMaterial({ color }),
         });
         break;
-      case "spownGrass":
-        this.renderer._scene.spownObject({
-          type: "grass",
-          position: opti || this.selectorPositionObject.position,
+      case "spawn":
+        this.renderer._scene.spawnObject({
+          type,
+          position: position || this.selectorPositionObject.position,
           w: 0.1,
           h: 0.1,
         });

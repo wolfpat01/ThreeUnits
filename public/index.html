@@ -13,7 +13,15 @@
       </div>
 
       <div id="middle" class="row col-12">
-        <div id="leftMenu" class="col-2 darkmod leftdefault"></div>
+        <div id="leftMenu" class="col-2 darkmod leftdefault">
+          <button
+            type="button"
+            id="spawnTree"
+            class="btn btn-light b-3 col-12 darkmod"
+          >
+            spawnTree
+          </button>
+        </div>
 
         <div id="renderer" height="200px" class="col-8"></div>
 
@@ -39,24 +47,23 @@
           >
             addCostumTexture
           </button>
-          <button type="button" id="spownGrass" class="btn btn-light col-12">
-            spownGrass
+          <button type="button" id="spawnGrass" class="btn btn-light col-12">
+            spawnGrass
           </button>
         </div>
       </div>
 
       <div id="bottom" class="darkmod col-12 bottomDefault">
-        <button type="button" id="spownWrold" class="btn btn-light col-12">
-          spownWrold
+        <button type="button" id="spawnWrold" class="btn btn-light col-12">
+          spawnWrold
         </button>
       </div>
     </div>
     <script src="js/THREE.js"></script>
     <script src="js/vector.js"></script>
-
+    <script src="js/components/mouse.js"></script>
     <script src="js/components/mathf.js"></script>
     <script src="js/components/Quaternion.js"></script>
-    <script src="js/components/mouse.js"></script>
     <script src="js/settings.js"></script>
     <script src="js/point.js"></script>
     <script type="module" src="index.js"></script>
