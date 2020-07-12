@@ -1,4 +1,12 @@
 {
+  "dirt": [
+    "./textures/grass0.png",
+    "./textures/grass0.png",
+    "./textures/grass0.png",
+    "./textures/grass0.png",
+    "./textures/grass0.png",
+    "./textures/grass0.png"
+  ],
   "grass": [
     "./textures/grass0.png",
     "./textures/grass1.png",
@@ -16,11 +24,11 @@
     "./textures/treewood2.jpg"
   ],
   "leaves": [
-  "./textures/leaves.png",
-  "./textures/leaves.png",
-  "./textures/leaves.png",
-  "./textures/leaves.png",
-  "./textures/leaves.png",
-  "./textures/leaves.png"
+    "./textures/leaves.png",
+    "./textures/leaves.png",
+    "./textures/leaves.png",
+    "./textures/leaves.png",
+    "./textures/leaves.png",
+    "./textures/leaves.png"
   ]
 }
