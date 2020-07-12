@@ -1,17 +1,8 @@
 # This is a simple project for a game engine
 
-## main toDO list:
+## how to run
 
-[X] extract the three abilities.
+npm install
 
-[ ] chose the best for us to use Openly.
+npm run
 
-[X] make the functions for bassic engine.
-
-[ ] make a simple UI for the engine.
-
-[ ] make the engine saves everything into files and import them.
-
-[ ] work on the time control, the play button.
-
-[ ] ...still working on them
