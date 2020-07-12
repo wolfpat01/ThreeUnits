@@ -11,7 +11,7 @@ class OBject {
 }
 
 import * as THREE from "./additionals/THREE.module.js";
-import * as textureLoader from "./textureLoader.js";
+import * as textureLoader from "./Compies/textureLoader.js";
 import * as fis from "./additionals/fileHandler.js";
 
 let blocks = [];
@@ -32,7 +32,6 @@ function readyUpBlocks() {
   Object.keys(blocks).forEach((name) => {
     materials[name] = MaterialBlock(name);
   });
-  console.log("everything is ready", materials);
 }
 
 function spawnBlock(options) {

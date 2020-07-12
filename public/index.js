@@ -1,6 +1,6 @@
 import * as THREE from "./js/components/additionals/THREE.module.js";
-import { Engine } from "./js/engine.js";
-import { getMaterialFromImage } from "./js/components/textureLoader.js";
+import { Engine } from "./js/components/main_Classes/engine.js";
+import { getMaterialFromImage } from "./js/components/Compies/textureLoader.js";
 import { Perlin } from "./js/components/additionals/perln.js";
 
 const colors = ["red", "blue", "green", "white", "brown"];
@@ -76,7 +76,7 @@ renderer.onclick = function onDocumentMouseClick(event) {
       1,
     0.1
   );
-  console.log(vec.x, vec.y);
+  //console.log(vec.x, vec.y);
   vec.unproject(camera);
 
   vec.sub(camera.position).normalize();

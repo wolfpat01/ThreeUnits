@@ -1,9 +1,9 @@
 import { Scene } from "./scene.js";
 import { Camera } from "./camera.js";
-import { WebGLRenderer } from "./components/additionals/THREE.module.js";
+import * as THREE from "../additionals/THREE.module.js";
 class Renderer {
   constructor(body, id = "renderer") {
-    this.renderer = new WebGLRenderer();
+    this.renderer = new THREE.WebGLRenderer();
     this.width = 0;
     this.height = 0;
     this.renderer.setSize(this.width, this.height);
@@ -65,8 +65,6 @@ class Renderer {
 
     middle.style.height = this.height;
     middle.style.Width = this.width;
-
-    console.log(main.offsetHeight, windowHeight, sumTTB);
 
     this.camera.aspect = this.width / this.height;
     this.camera.updateProjectionMatrix();

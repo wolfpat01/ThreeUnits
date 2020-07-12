@@ -1,6 +1,6 @@
-import { OBJLoader2 } from "./components/additionals/objLoader.js";
-import * as THREE from "./components/additionals/THREE.module.js";
-import { newCube, spawnBlock, OBject } from "./components/object.js";
+import { OBJLoader2 } from "../additionals/objLoader.js";
+import * as THREE from "../additionals/THREE.module.js";
+import { newCube, spawnBlock, OBject } from "../object.js";
 
 class Scene {
   constructor(props) {

@@ -3,11 +3,8 @@ const Quaternion = new CQuaternion();
 const Mouse = new CMouse();
 
 import { Renderer } from "./renderer.js";
-import {
-  BoxGeometry,
-  MeshBasicMaterial,
-} from "./components/additionals/THREE.module.js";
-import { newCube } from "./components/object.js";
+import { BoxGeometry, MeshBasicMaterial } from "../additionals/THREE.module.js";
+import { newCube } from "../object.js";
 class Engine {
   constructor() {
     this.window = document.getElementById("renderer");
